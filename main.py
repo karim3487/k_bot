@@ -43,7 +43,10 @@ async def get_answer(message: types.Message):
                 parse_mode='html'
             )
         else:
-            await message.answer(answer['text'])
+            if answer['url'] != '':
+                await message.answer(f"{answer['text']}\n\nСсылка {answer['url']}")
+            else:
+                await message.answer(answer['text'])
 
 
 @dp.errors_handler(exception=BotBlocked)
