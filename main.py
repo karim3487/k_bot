@@ -64,7 +64,9 @@ async def error_bot_blocked(update: types.Update, exception: MessageIsTooLong):
 
 
 def build_message(text, header, lid, url):
-    return f"{text}\n\n\n<b>{header}</b>\n\n{lid}\n\n<i>Ссылка на статью:{url}</i>"
+    if lid != '':
+        return f"{text}\n\n\n<b>{header}</b>\n\n{lid}\n\n<i>Ссылка на статью:{url}</i>"
+    return f"{text}\n\n\n<b>{header}</b>\n\n<i>Ссылка:{url}</i>"
 
 
 if __name__ == "__main__":
